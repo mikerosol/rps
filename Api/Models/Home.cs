@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Objects
+namespace Api.Models
 {
     public class Home
     {
         public int HomeId { get; set; }
         
-        public Objects.Location Location { get; set; }
+        public Models.Location Location { get; set; }
 
         //[Required]
         public RiskContructionEnum RiskConstruction { get; set; }

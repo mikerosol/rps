@@ -19,6 +19,9 @@ namespace Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddSingleton<Api.Interfaces.IInsurancePolicyRepository, Api.Code.InsurancePolicy>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info
@@ -40,7 +43,7 @@ namespace Api
             app.UseMvc();
 
             app.UseSwagger();
-            app.UseSwaggerUI( c =>
+            app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Core Api");
             });

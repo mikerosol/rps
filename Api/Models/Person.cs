@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Objects
+namespace Api.Models
 {
     public class Person : Location
     {
@@ -14,6 +14,6 @@ namespace Objects
         //[StringLength(200)]
         public string LastName { get; set; }
 
-        public Objects.Location Residence { get; set; }
+        public Models.Location Residence { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Objects
+namespace Api.Models
 {    
     public class InsurancePolicy
     {                      
@@ -16,7 +16,7 @@ namespace Objects
         //[Required]
         public DateTime PolicyExpirationDate { get; set; }
 
-        public Objects.Person PrimaryInsuredPerson { get; set; }
-        public Objects.Home RiskHome { get; set; }
+        public Models.Person PrimaryInsuredPerson { get; set; }
+        public Models.Home RiskHome { get; set; }
     }
 }
