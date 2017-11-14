@@ -13,7 +13,5 @@ namespace Api.Models
         //[Required]
         //[StringLength(200)]
         public string LastName { get; set; }
-
-        public Models.Location Residence { get; set; }
     }
 }

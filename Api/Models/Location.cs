@@ -5,8 +5,6 @@ namespace Api.Models
 {
     public class Location
     {
-        public int LocationId { get; set; }
-
         //[Required]
         //[StringLength(100)]
         public string Address { get; set; }

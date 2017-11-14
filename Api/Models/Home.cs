@@ -3,12 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Api.Models
 {
-    public class Home
+    public class Home : Location
     {
-        public int HomeId { get; set; }
-        
-        public Models.Location Location { get; set; }
-
         //[Required]
         public RiskContructionEnum RiskConstruction { get; set; }
 

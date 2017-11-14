@@ -6,10 +6,40 @@ using System;
 
 namespace Api.Code
 {
-    public class InsurancePolicy : IInsurancePolicyRepository
+    public class InsurancePolicyRepository : IInsurancePolicyRepository
     {
         private static List<Models.InsurancePolicy> insurancePolicies = new List<Models.InsurancePolicy>();
-        
+
+        public InsurancePolicyRepository (){
+            #region INSURANCE POLICY 1
+            insurancePolicies.Add(new Models.InsurancePolicy()
+            {
+                PolicyNumber = 1,
+                PolicyEffectiveDate = DateTime.Now,
+                PolicyExpirationDate = DateTime.Now,
+                PrimaryInsuredPerson = new Models.Person()
+                {
+                    FirstName = "Alison",
+                    LastName = "Manning",
+                    Address = "123 Main Street",
+                    City = "Macungie",
+                    State = Models.Location.StateEnum.PA,
+                    ZipCode = "12345"
+                    
+                },
+                RiskHome = new Models.Home()
+                {
+                    RiskConstruction = Models.Home.RiskContructionEnum.SingleWideManufacturedHome,
+                    RiskYearBuilt = 2000,
+                    Address = "",
+                    City = "",
+                    State = Models.Location.StateEnum.PA,
+                    ZipCode = ""                                       
+                }
+            });
+            #endregion
+        }
+
         public List<Models.InsurancePolicy> Get(int? insurancePolicyId = null)
         {
             return insurancePolicyId == null ?

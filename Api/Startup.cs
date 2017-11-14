@@ -20,7 +20,7 @@ namespace Api
         {
             services.AddMvc();
 
-            services.AddSingleton<Api.Interfaces.IInsurancePolicyRepository, Api.Code.InsurancePolicy>();
+            services.AddSingleton<Api.Interfaces.IInsurancePolicyRepository, Api.Code.InsurancePolicyRepository>();
 
             services.AddSwaggerGen(c =>
             {
@@ -41,11 +41,13 @@ namespace Api
             }
 
             app.UseMvc();
-
+            
             app.UseSwagger();
+
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Core Api");
+                c.ShowRequestHeaders();
             });
         }
     }
