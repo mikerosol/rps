@@ -18,11 +18,20 @@ namespace Api.Controllers
         {
             _insurancePolicyRepository = insurancePolicyRepositor;
         }
-        
-        [HttpGet]
-        public IEnumerable<Models.InsurancePolicy> Get()
+
+        public IEnumerable<Models.InsurancePolicy> Get(int? insurancePolicyId = null)
         {
-            return _insurancePolicyRepository.Get();
+            return _insurancePolicyRepository.Get(insurancePolicyId);
+        }        
+
+        public Models.InsurancePolicy Post([FromBody]Models.InsurancePolicy insurancePolicy)
+        {
+            return _insurancePolicyRepository.Save(insurancePolicy);
+        }
+
+        public void Delete(int insurancePolicyId)
+        {
+            _insurancePolicyRepository.Delete(insurancePolicyId);
         }
     }
 }
