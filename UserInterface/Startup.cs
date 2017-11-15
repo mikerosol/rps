@@ -22,6 +22,9 @@ namespace UserInterface
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddSingleton<Api.Interfaces.IInsurancePolicyRepository, Api.Code.InsurancePolicyRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,7 +46,7 @@ namespace UserInterface
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=InsurancePolicy}/{action=Index}/{id?}");
             });
         }
     }

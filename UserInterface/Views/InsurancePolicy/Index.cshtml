@@ -1,0 +1,95 @@
+﻿@model List<Api.Models.InsurancePolicy>
+@{
+    ViewBag.Title = "Quotes";
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Insurance Policies
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Policy Number</th>
+                                <th>Insured Name</th>
+                                <th>Effective Date</th>
+                                <th>Expiration Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var insurancePolicy in @Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <button class="EditButton btn btn-primary btn-xs" title="Edit" data-insurancepolicyid="@insurancePolicy.PolicyId">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </button>
+                                            <button class="DeleteButton btn btn-danger btn-xs" title="Delete" data-insurancepolicyid="@insurancePolicy.PolicyId">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            @insurancePolicy.PolicyId
+                                        </td>
+                                        <td>
+                                            @if (insurancePolicy.PrimaryInsuredPerson != null)
+                                            {
+                                                @(insurancePolicy.PrimaryInsuredPerson.FirstName + " " + insurancePolicy.PrimaryInsuredPerson.LastName)
+                                            }
+                                        </td>
+                                        <td>
+                                            @insurancePolicy.PolicyEffectiveDate
+                                        </td>
+                                        <td>
+                                            @insurancePolicy.PolicyExpirationDate
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <button id="AddButton" class="btn btn-primary btn-xs" title="Add">
+                    <span class="glyphicon glyphicon-plus"></span> Create new insurance policy
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    RPS.InsurancePolicyIndex = {
+        AddButtonClick: function () {
+            window.location.href = '/InsurancePolicy/Details';
+        },
+        EditButtonClick: function () {
+            var insurancePolicyId = $(this).data("insurancepolicyid");
+            window.location.href = '/InsurancePolicy/Details/?insurancePolicyId=' + insurancePolicyId;
+        },
+        DeleteButtonClick: function () {
+            $.ajax({
+                type: "POST",
+                url: "/InsurancePolicy/Delete",
+                data: {
+                    insurancePolicyId: $(this).data("insurancepolicyid")
+                },
+                success: function (result) {
+                    location.reload();
+                }
+            });
+        },
+        Init: function () {
+            $("#AddButton").on("click", RPS.InsurancePolicyIndex.AddButtonClick);
+            $(".EditButton").on("click", RPS.InsurancePolicyIndex.EditButtonClick);
+            $(".DeleteButton").on("click", RPS.InsurancePolicyIndex.DeleteButtonClick);
+        }
+    }
+
+    $(document).ready(function () {
+        RPS.InsurancePolicyIndex.Init();
+    });
+</script>

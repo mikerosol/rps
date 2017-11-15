@@ -1,0 +1,102 @@
+﻿@*@model Api.Models.InsurancePolicy
+@{
+    ViewBag.Title = "Insurance Policy Details";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Summary
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Policy Id</th>
+                                <th>Policy Number</th>
+                                <th>Policy EffectiveDate</th>
+                                <th>Policy ExpirationDate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.PolicyId</td>
+                                <td>@Model.PolicyNumber</td>
+                                <td>@Model.PolicyEffectiveDate</td>
+                                <td>@Model.PolicyExpirationDate</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Primary Insured Person
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Person Id</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Zip Code</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.PrimaryInsuredPerson.PersonId</td>
+                                <td>@Model.PrimaryInsuredPerson.FirstName</td>
+                                <td>@Model.PrimaryInsuredPerson.LastName</td>
+                                <td>@Model.PrimaryInsuredPerson.Residence.Address</td>
+                                <td>@Model.PrimaryInsuredPerson.Residence.City</td>
+                                <td>@Model.PrimaryInsuredPerson.Residence.State</td>
+                                <td>@Model.PrimaryInsuredPerson.Residence.ZipCode</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Risk Home
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Home Id</th>
+                                <th>Construction Type</th>
+                                <th>Year Built</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Zip Code</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.RiskHome.HomeId</td>
+                                <td>@Model.RiskHome.RiskConstruction</td>
+                                <td>@Model.RiskHome.RiskYearBuilt</td>
+                                <td>@Model.RiskHome.Location.Address</td>
+                                <td>@Model.RiskHome.Location.City</td>
+                                <td>@Model.RiskHome.Location.State</td>
+                                <th>@Model.RiskHome.Location.ZipCode</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
