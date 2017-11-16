@@ -64,23 +64,89 @@
 <script>
     RPS.InsurancePolicyIndex = {
         AddButtonClick: function () {
-            window.location.href = '/InsurancePolicy/Add';
+            $.ajax({
+                type: "GET",
+                url: "/InsurancePolicy/Add",
+                success: function (data) {
+                    bootbox.dialog({
+                        closeButton: false,
+                        message: data,
+                        title: "New Insurance Policy",
+                        onEscape: true,
+                        buttons: {
+                            cancel: {
+                                label: 'Cancel',
+                                className: 'btn-default'
+                            },
+                            success: {
+                                label: "Save",
+                                className: "btn-primary",
+                                callback: function () {
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "/InsurancePolicy/Add",
+                                        data: $("form").serialize(),
+                                        success: function (result) {
+                                            location.reload();
+                                        }
+                                    });
+                                }
+                            },
+                        }
+                    });
+                }
+            });                 
         },
         EditButtonClick: function () {
             var insurancePolicyId = $(this).data("insurancepolicyid");
-            window.location.href = '/InsurancePolicy/Details/?insurancePolicyId=' + insurancePolicyId;
-        },
-        DeleteButtonClick: function () {
+
             $.ajax({
-                type: "POST",
-                url: "/InsurancePolicy/Delete",
+                type: "GET",
+                url: "/InsurancePolicy/Details",
                 data: {
-                    insurancePolicyId: $(this).data("insurancepolicyid")
+                    insurancePolicyId: insurancePolicyId
                 },
-                success: function (result) {
-                    location.reload();
+                success: function (data) {
+                    bootbox.dialog({
+                        closeButton: false,
+                        message: data,
+                        title: "Existing Insurance Policy",
+                        onEscape: true,
+                        buttons: {
+                            cancel: {
+                                label: 'Close',
+                                className: 'btn-default'
+                            }
+                        }
+                    });
                 }
             });
+        },
+        DeleteButtonClick: function () {
+            var insurancePolicyId = $(this).data("insurancepolicyid");
+
+            bootbox.confirm({
+                size: "small",
+                message: "Are you sure want to permanently delete this insurance policy?",
+                callback: function (result) { 
+                    if (result) {
+                        $.ajax({
+                            type: "POST",
+                            url: "/InsurancePolicy/Delete",
+                            data: {
+                                insurancePolicyId: insurancePolicyId
+                            },
+                            success: function (result) {
+                                if (result) {
+                                    location.reload();
+                                }
+                                
+                            }
+                        });                        
+                    }
+                }
+            })
+            
         },
         Init: function () {
             $("#AddButton").on("click", RPS.InsurancePolicyIndex.AddButtonClick);

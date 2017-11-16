@@ -1,7 +1,7 @@
 ﻿@model Api.Models.InsurancePolicy
-@*@{
+@{
     Layout = null;
-}*@
+}
 
 @using (Html.BeginForm())
 {
@@ -9,7 +9,7 @@
         <div class="col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    New Insurance Policy
+                    Details
                 </div>
                 <div class="panel-body">
                     @Html.HiddenFor(m => Model.PolicyId)
@@ -79,7 +79,7 @@
                 <div class="panel-body">
                     <div class="form-group">
                         @Html.LabelFor(model => model.RiskHome.RiskConstruction)
-                        @Html.TextBoxFor(m => Model.RiskHome.RiskConstruction, new { @class = "form-control" })
+                        @Html.DropDownList("RiskHome.RiskConstruction", ViewBag.RiskContructions as SelectList, new { @class = "form-control", id = "RiskHome_RiskConstruction" })
                     </div>
 
                     <div class="form-group">
@@ -109,6 +109,4 @@
             </div>
         </div>
     </div>
-
-    <input type="submit" value="Save">
 }
