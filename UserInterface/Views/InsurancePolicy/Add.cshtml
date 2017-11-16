@@ -1,0 +1,114 @@
+﻿@model Api.Models.InsurancePolicy
+@*@{
+    Layout = null;
+}*@
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    New Insurance Policy
+                </div>
+                <div class="panel-body">
+                    @Html.HiddenFor(m => Model.PolicyId)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PolicyNumber)
+                        @Html.TextBoxFor(m => Model.PolicyNumber, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PolicyEffectiveDate)
+                        @Html.TextBoxFor(x => x.PolicyEffectiveDate, new { @class = "form-control date", @type = "date" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PolicyExpirationDate)
+                        @Html.TextBoxFor(x => x.PolicyExpirationDate, new { @class = "form-control date", @type = "date" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Primary Insured Person
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PrimaryInsuredPerson.FirstName)
+                        @Html.TextBoxFor(m => Model.PrimaryInsuredPerson.FirstName, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PrimaryInsuredPerson.LastName)
+                        @Html.TextBoxFor(m => Model.PrimaryInsuredPerson.LastName, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PrimaryInsuredPerson.Address)
+                        @Html.TextBoxFor(m => Model.PrimaryInsuredPerson.Address, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PrimaryInsuredPerson.City)
+                        @Html.TextBoxFor(m => Model.PrimaryInsuredPerson.City, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PrimaryInsuredPerson.ZipCode)
+                        @Html.TextBoxFor(m => Model.PrimaryInsuredPerson.ZipCode, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PrimaryInsuredPerson.State)
+                        @Html.DropDownList("PrimaryInsuredPerson.State", ViewBag.States as SelectList, new { @class = "form-control", id = "PrimaryInsuredPerson_State" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Risk Home
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RiskHome.RiskConstruction)
+                        @Html.TextBoxFor(m => Model.RiskHome.RiskConstruction, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RiskHome.RiskYearBuilt)
+                        @Html.TextBoxFor(m => Model.RiskHome.RiskYearBuilt, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RiskHome.Address)
+                        @Html.TextBoxFor(m => Model.RiskHome.Address, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RiskHome.City)
+                        @Html.TextBoxFor(m => Model.RiskHome.City, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RiskHome.ZipCode)
+                        @Html.TextBoxFor(m => Model.RiskHome.ZipCode, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RiskHome.State)
+                        @Html.DropDownList("RiskHome.State", ViewBag.States as SelectList, new { @class = "form-control", id= "RiskHome_State" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="submit" value="Save">
+}

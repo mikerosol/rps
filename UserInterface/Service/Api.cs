@@ -16,7 +16,7 @@ namespace UserInterface.Service
         {
             get
             {
-                return "";
+                return "http://localhost:51306/api/";
                 //return WebConfigurationManager.AppSettings["WebApiUrl"];
             }
         }

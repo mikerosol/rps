@@ -8,10 +8,12 @@ namespace Api.Models
 
         //[Required]
         //[StringLength(200)]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         //[Required]
         //[StringLength(200)]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
     }
 }

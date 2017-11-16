@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using UserInterface.Models;
 using System.Net.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace UserInterface.Controllers
 {
@@ -21,58 +22,52 @@ namespace UserInterface.Controllers
             }
         }
 
-        //[HttpGet]
-        //public async Task<ActionResult> Details(int? quoteId = null)
-        //{
-        //    using (var api = Global.Api)
-        //    {
-        //        var quote = new Objects.InsurancePolicy();
-
-        //        //NEW QUOTE
-        //        if (quoteId == null)
-        //        {
-        //            //quote = await api.Request<Objects.Quote>(HttpMethod.Post, "Quote", "", null, quote);
-        //            var quotes = new List<Objects.InsurancePolicy>();
-        //        }
-        //        //EXISITNG QUOTE
-        //        else
-        //        {
-        //            //var quotes = await api.Request<List<Objects.Quote>>(HttpMethod.Get, "Quote", $"quoteId={quoteId}", null, null);
-        //            var quotes = new List<Objects.InsurancePolicy>();
-        //            quote = quotes.Single();
-        //        }
-        //        return View(quote);
-        //    }
-        //}
-
-        //[HttpPost]
-        //public async Task<bool> Delete(int quoteId)
-        //{
-        //    using (var api = Global.Api)
-        //    {
-        //        //await api.Request<Objects.Quote>(HttpMethod.Delete, "Quote", $"quoteId={quoteId}", null, null);
-        //        return true;
-        //    }
-        //}
-        
-
-        public IActionResult About()
+        [HttpGet]
+        public async Task<IActionResult> Add()
         {
-            ViewData["Message"] = "Your application description page.";
+            #region ENUM            
+            var enumData = from Api.Models.Location.StateEnum e in Enum.GetValues(typeof(Api.Models.Location.StateEnum))
+            select new
+            {
+                ID = (int)e,
+                Name = e.ToString()
+            };
+            ViewBag.States = new SelectList(enumData, "ID", "Name");
+            //ViewBag.States.Add(new SelectListItem("Please Select..., """));
+            #endregion
 
-            return View();
+            return View(new Api.Models.InsurancePolicy());
         }
 
-        public IActionResult Contact()
+        [HttpPost]
+        public async Task<IActionResult> Add(Api.Models.InsurancePolicy insurancePolicy)
         {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+            using (var api = await Task.Run(() => new UserInterface.Service.Api()))
+            {
+                var insurancePolicies = await api.Request<Api.Models.InsurancePolicy>(HttpMethod.Post, "InsurancePolicy", "", null, insurancePolicy);
+                return RedirectToAction("Index");
+            }            
         }
 
-        public IActionResult Error()
+        [HttpGet]
+        public async Task<IActionResult> Details(int insurancePolicyId)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            using (var api = await Task.Run(() => new UserInterface.Service.Api()))
+            {
+                var insurancePolicies = await api.Request<List<Api.Models.InsurancePolicy>>(HttpMethod.Get, "InsurancePolicy", $"insurancePolicyId={insurancePolicyId}", null, null);
+                var insurancePolicy = insurancePolicies.Single();
+                return View(insurancePolicy);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int insurancePolicyId)
+        {
+            using (var api = await Task.Run(() => new UserInterface.Service.Api()))
+            {
+                bool response = await api.Request<bool>(HttpMethod.Delete, "InsurancePolicy", $"insurancePolicyId={insurancePolicyId}", null, null);
+                return RedirectToAction("Index");
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Models.InsurancePolicy> Get(int? insurancePolicyId = null)
+        public IEnumerable<Models.InsurancePolicy> Get(int? insurancePolicyId)
         {
             return _insurancePolicyRepository.Get(insurancePolicyId);
         }        
@@ -32,9 +32,10 @@ namespace Api.Controllers
         }
 
         [HttpDelete]
-        public void Delete(int insurancePolicyId)
+        public bool Delete(int insurancePolicyId)
         {
             _insurancePolicyRepository.Delete(insurancePolicyId);
+            return true;
         }
     }
 }

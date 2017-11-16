@@ -6,10 +6,12 @@ namespace Api.Models
     public class Home : Location
     {
         //[Required]
+        [Display(Name = "Construction Type")]
         public RiskContructionEnum RiskConstruction { get; set; }
 
         //[Required]
         //[Range(0, 2020)]
+        [Display(Name = "Year Built")]
         public int RiskYearBuilt { get; set; }
 
         public enum RiskContructionEnum

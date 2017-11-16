@@ -64,7 +64,7 @@
 <script>
     RPS.InsurancePolicyIndex = {
         AddButtonClick: function () {
-            window.location.href = '/InsurancePolicy/Details';
+            window.location.href = '/InsurancePolicy/Add';
         },
         EditButtonClick: function () {
             var insurancePolicyId = $(this).data("insurancepolicyid");
@@ -89,7 +89,7 @@
         }
     }
 
-    $(document).ready(function () {
+    $(function () {
         RPS.InsurancePolicyIndex.Init();
     });
 </script>

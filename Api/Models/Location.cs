@@ -19,6 +19,7 @@ namespace Api.Models
 
         //[Required]
         //[StringLength(50)]
+        [Display(Name = "Zip Code")]
         public string ZipCode { get; set; }
 
         public enum StateEnum
