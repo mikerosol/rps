@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Api.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Api.Interfaces;
+using System.Collections.Generic;
 
 namespace Api.Controllers
 {

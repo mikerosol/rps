@@ -1,11 +1,9 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Api.Interfaces;
-using Api.Models;
-using System;
-using Microsoft.AspNetCore.Mvc;
-using Api.Controllers;
 using Api.Code;
+using Api.Controllers;
+using Api.Interfaces;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
+using System;
 
 namespace ApiUnitTests
 {
@@ -15,7 +13,7 @@ namespace ApiUnitTests
         private IInsurancePolicyRepository _insurancePolicyRepository;
         private InsurancePolicyController _controller;
 
-        InsurancePolicy()
+        public InsurancePolicy()
         {
             _insurancePolicyRepository = new InsurancePolicyRepository();
             _controller = new InsurancePolicyController(_insurancePolicyRepository);
@@ -27,7 +25,7 @@ namespace ApiUnitTests
             //Arrange
             var insurancePolicy = new Api.Models.InsurancePolicy()
             {
-                PolicyNumber = 1,
+                PolicyNumber = 100,
                 PolicyEffectiveDate = DateTime.Now,
                 PolicyExpirationDate = DateTime.Now,
                 PrimaryInsuredPerson = new Api.Models.Person()
@@ -50,13 +48,12 @@ namespace ApiUnitTests
                     ZipCode = ""
                 }
             };
-            var expected = new Microsoft.AspNetCore.Mvc.OkResult();
 
             //Act
-            var actual = _controller.Post(insurancePolicy);
+            var response = _controller.Post(insurancePolicy);
 
             //Assert
-            Assert.AreEqual(JsonConvert.SerializeObject(expected), JsonConvert.SerializeObject(actual));
+            Assert.AreEqual(JsonConvert.SerializeObject(insurancePolicy), JsonConvert.SerializeObject(response));
         }
     }
 }
