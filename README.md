@@ -2,7 +2,7 @@
 
 User Interface: <a href="http://rps.codefearless.com">rps.codefearless.com</a>
 
-Api: <a href="http://rpsapi.codefearless.com">rpsapi.codefearless.com</a>
+Api: <a href="http://rpsapi.codefearless.com/swagger">rpsapi.codefearless.com/swagger</a>
 
 
 <p>
