@@ -1,5 +1,10 @@
 <h1>RPS Code Challenge</h1>
 
+User Interface: <a href="http://rps.codefearless.com">rps.codefearless.com</a>
+
+Api: <a href="http://rpsapi.codefearless.com">rpsapi.codefearless.com</a>
+
+
 <p>
   Here are some highlighted technologies/concepts used in this project:
 </p>
