@@ -1,4 +1,4 @@
-<h1>RPS Code Challenge</h1>
+<h1>Insurance Policy Generator</h1>
 
 User Interface: <a href="http://rps.codefearless.com">rps.codefearless.com</a>
 
