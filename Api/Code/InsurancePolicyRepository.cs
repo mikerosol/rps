@@ -29,7 +29,7 @@ namespace Api.Code
                 },
                 RiskHome = new Models.Home()
                 {
-                    RiskConstruction = Models.Home.RiskContructionEnum.SingleWideManufacturedHome,
+                    RiskConstruction = Models.Home.RiskConstructionEnum.SingleWideManufacturedHome,
                     RiskYearBuilt = 2000,
                     Address = "123 Main Street",
                     City = "Macungie",
@@ -58,7 +58,7 @@ namespace Api.Code
                 },
                 RiskHome = new Models.Home()
                 {
-                    RiskConstruction = Models.Home.RiskContructionEnum.DoubleWideManufacturedHome,
+                    RiskConstruction = Models.Home.RiskConstructionEnum.DoubleWideManufacturedHome,
                     RiskYearBuilt = 1998,
                     Address = "50 Division Ave",
                     City = "Garfield",
@@ -87,7 +87,7 @@ namespace Api.Code
                 },
                 RiskHome = new Models.Home()
                 {
-                    RiskConstruction = Models.Home.RiskContructionEnum.ModularHome,
+                    RiskConstruction = Models.Home.RiskConstructionEnum.ModularHome,
                     RiskYearBuilt = 1980,
                     Address = "892 Banta Ave",
                     City = "Wicker",

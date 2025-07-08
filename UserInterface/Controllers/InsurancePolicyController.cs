@@ -34,13 +34,13 @@ namespace UserInterface.Controllers
             #endregion
 
             #region Generate risk home construction enum            
-            var riskContructions = from Api.Models.Home.RiskContructionEnum e in Enum.GetValues(typeof(Api.Models.Home.RiskContructionEnum))
+            var riskConstructions = from Api.Models.Home.RiskConstructionEnum e in Enum.GetValues(typeof(Api.Models.Home.RiskConstructionEnum))
             select new
             {
                 ID = (int)e,
                 Name = UserInterface.Code.Enum.GetEnumDescription(e)
             };
-            ViewBag.RiskContructions = new SelectList(riskContructions, "ID", "Name");
+            ViewBag.RiskConstructions = new SelectList(riskConstructions, "ID", "Name");
             #endregion
 
             return View(new Api.Models.InsurancePolicy());
