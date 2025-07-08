@@ -7,19 +7,19 @@ namespace Api.Models
     {
         //[Required]
         [Display(Name = "Construction Type")]
-        public RiskContructionEnum RiskConstruction { get; set; }
+        public RiskConstructionEnum RiskConstruction { get; set; }
 
         //[Required]
         //[Range(0, 2020)]
         [Display(Name = "Year Built")]
         public int RiskYearBuilt { get; set; }
 
-        public enum RiskContructionEnum
+        public enum RiskConstructionEnum
         {
             [Description("Modular Home")]
             ModularHome,
             [Description("Site Built Home")]
-            SiteBuiltHome,            
+            SiteBuiltHome,
             [Description("Single Wide Manufactured Home")]
             SingleWideManufacturedHome,
             [Description("Double Wide Manufactured Home")]

@@ -40,7 +40,7 @@ namespace ApiUnitTests
                 },
                 RiskHome = new Api.Models.Home()
                 {
-                    RiskConstruction = Api.Models.Home.RiskContructionEnum.SingleWideManufacturedHome,
+                    RiskConstruction = Api.Models.Home.RiskConstructionEnum.SingleWideManufacturedHome,
                     RiskYearBuilt = 2000,
                     Address = "",
                     City = "",
