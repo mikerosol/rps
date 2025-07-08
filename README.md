@@ -14,12 +14,12 @@ Api: <a href="http://rpsapi.codefearless.com/swagger">rpsapi.codefearless.com/sw
 <pre>
 asp.core 2.0 webapi / rest
 oop
-soa arcitecture
+SOA architecture
 direct dependency injection
 ternary operations
 inheritance
 nuget/bower package management
-data store / repositary pattern using an interface
+data store / repository pattern using an interface
 data normalization		 
 </pre>
 
@@ -28,7 +28,7 @@ data normalization
 mvc
 namespaced javascript
 jquery
-razer
+Razor
 responsive bootstrap design
 </pre>
 
